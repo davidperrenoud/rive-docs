@@ -71,7 +71,7 @@ main();
 Once the WASM is loaded in, the next step is to create the renderer with the `makeRenderer()` API and pass in the canvas element on which Rive should render. The renderer draws Rive onto the `<canvas>` element with a rendering context. If you're using `@rive-app/canvas-advanced`, it will create a Canvas2D rendering context. If you're using `@rive-app/webgl2-advanced`, it will create a WebGL rendering context.
 
 ```javascript
-const canvas = document.getElementById('your-canvas-element');
+const canvas = document.getElementById('canvas');
 const renderer = rive.makeRenderer(canvas);
 ```
 
@@ -104,13 +104,13 @@ The main components you will most likely want to instance are:
 Start by instancing an artboard, and then you can create a state machine and linear animation instances from the artboard reference like below.
 
 ```javascript
-const artboard = file.artboardByName('New Artboard');
-const animation = new rive.LinearAnimationInstnace(
-  artboard.animationByName('idle'),
+const artboard = file.artboardByName('Artboard');
+const animation = new rive.LinearAnimationInstance(
+  artboard.animationByName('Timeline 1'),
   artboard
 );
 const stateMachine = new rive.StateMachineInstance(
-  artboard.stateMachineByName('your-state-machine-name'),
+  artboard.stateMachineByName('State Machine 1'),
   artboard
 );
 ```
@@ -280,13 +280,13 @@ const bytes = await (
   await fetch(new Request('basketball.riv'))
 ).arrayBuffer();
 const file = (await rive.load(new Uint8Array(bytes))) as File;
-const artboard = file.artboardByName('New Artboard');
-const animation = new rive.LinearAnimationInstnace(
-  artboard.animationByName('idle'),
+const artboard = file.artboardByName('Artboard');
+const animation = new rive.LinearAnimationInstance(
+  artboard.animationByName('Timeline 1'),
   artboard
 );
 const stateMachine = new rive.StateMachineInstance(
-  artboard.stateMachineByName('your-state-machine-name'),
+  artboard.stateMachineByName('State Machine 1'),
   artboard
 );
 
