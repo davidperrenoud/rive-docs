@@ -84,8 +84,7 @@ const bytes = await (
   await fetch(new Request('basketball.riv'))
 ).arrayBuffer();
 
-// import File as a named import from the Rive dependency
-const file = (await rive.load(new Uint8Array(bytes))) as File;
+const file = await rive.load(new Uint8Array(bytes));
 ```
 
 <Note>
